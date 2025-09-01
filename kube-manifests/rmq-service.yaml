@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vpromq01 # This should match the host in application.properties file
+spec:
+  selector:
+    app: vpro-rmq # Ref from deployment file spec.template.metadata.labels
+  ports:
+    - protocol: TCP
+      port: 5672
+      targetPort: rabbitmq-port # Ref from deployment file
