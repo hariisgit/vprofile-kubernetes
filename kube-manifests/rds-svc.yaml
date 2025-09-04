@@ -4,4 +4,4 @@ metadata:
   name: vpro-rds-service
 spec:
   type: ExternalName
-  externalName: database-1.cj6w02cuehgf.us-east-1.rds.amazonaws.com
+  externalName: database-1.cu3gcgys0bgf.us-east-1.rds.amazonaws.com
