@@ -1,2 +1,2 @@
 # vprofile-kubernetes
-![alt text](https://github.com/[harrisgit]/[vprofile-kubernetes]/blob/[main]/architecture_diagram.png?raw=true)
+![alt text](https://github.com/hariisgit/vprofile-kubernetes/blob/main/architecture_diagram.png)
