@@ -3,9 +3,18 @@ kind: Ingress
 metadata:
   name: vpro-ingress
   annotations:
-    nginx.ingress.kubernetes.io/use-regex: "true"
+    # Use the AWS Load Balancer Controller
+    kubernetes.io/ingress.class: "alb"
+    # Specify the load balancer scheme
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    # Use an Application Load Balancer
+    alb.ingress.kubernetes.io/target-type: ip
+    # Specify which port to use for the target group
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    # Name the load balancer for easier identification in AWS console
+    alb.ingress.kubernetes.io/load-balancer-name: vpro-app-lb
 spec:
-  ingressClassName: nginx
+  ingressClassName: alb
   rules:
   - http:
       paths:

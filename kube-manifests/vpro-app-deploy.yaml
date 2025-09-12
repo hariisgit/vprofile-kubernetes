@@ -20,10 +20,16 @@ spec:
         ports:
         - name: vproapp-port
           containerPort: 8080
+        env:
+        - name: RABBITMQ_DEFAULT_PASS
+          valueFrom: 
+            secretKeyRef: 
+              name: app-secret
+              key: rmq-pass
       initContainers:
       - name: init-mydb
         image: busybox
-        command: ['sh', '-c', 'echo "Waiting for RDS endpoint..."; while ! nc -z database-1.cu3gcgys0bgf.us-east-1.rds.amazonaws.com 3306; do sleep 1; done; echo "RDS is available!"']
+        command: ['sh', '-c', 'echo "Waiting for RDS endpoint..."; while ! nc -z database-1.cjmky2kuk50q.us-east-1.rds.amazonaws.com 3306; do sleep 1; done; echo "RDS is available!"']
       - name: init-memcache
         image: busybox
         command: ['sh', '-c', 'until nslookup vprocache01.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for memcache; sleep 2; done;']
